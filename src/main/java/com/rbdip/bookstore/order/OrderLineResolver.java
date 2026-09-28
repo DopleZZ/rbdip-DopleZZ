@@ -24,7 +24,7 @@ public class OrderLineResolver {
         Product product = productRepository
                 .findById(item.productId())
                 .orElseThrow(() -> new IllegalArgumentException("product " + item.productId() + " not found"));
-        return new OrderLine(product.getName(), product.getPrice(), resolveQuantity(item.quantity()));
+        return new OrderLine(product, resolveQuantity(item.quantity()));
     }
 
     private int resolveQuantity(Integer quantity) {
